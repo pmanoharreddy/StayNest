@@ -1,7 +1,8 @@
+require("dotenv").config({ path: "../.env" });
 const mongoose=require("mongoose");
 const initData=require("./data.js");
 const listing=require("../models/listing.js");
-const mongoUrl="mongodb://127.0.0.1:27017/airbnb";
+const mongoUrl=process.env.ATLASDB_URL;
 
 
 main().then(()=>{
