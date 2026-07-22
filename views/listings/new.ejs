@@ -1,0 +1,89 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="form-container">
+
+    <h1>Add New Listing</h1>
+    <p class="form-subtitle">
+        Share your property with travelers around the world.
+    </p>
+
+    <form
+        action="/listings"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input
+                id="title"
+                type="text"
+                name="listing[title]"
+                placeholder="Cozy Beach House"
+                required>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                name="listing[description]"
+                rows="5"
+                placeholder="Describe your property, nearby attractions, amenities..."
+                required></textarea>
+        </div>
+
+        <!-- Upload Image -->
+        <div class="form-group">
+            <label for="image">Upload Image</label>
+            <input
+                id="image"
+                type="file"
+                name="listing[image]"
+                accept="image/png, image/jpeg, image/jpg"
+                required>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+            <label for="price">Price (₹ / Night)</label>
+            <input
+                id="price"
+                type="number"
+                name="listing[price]"
+                placeholder="2500"
+                min="0"
+                required>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input
+                id="location"
+                type="text"
+                name="listing[location]"
+                placeholder="Bengaluru"
+                required>
+        </div>
+
+        <!-- Country -->
+        <div class="form-group">
+            <label for="country">Country</label>
+            <input
+                id="country"
+                type="text"
+                name="listing[country]"
+                placeholder="India"
+                required>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            Create Listing
+        </button>
+
+    </form>
+
+</div>

@@ -1,0 +1,85 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="form-container">
+
+    <h2>Edit Listing</h2>
+
+    <form
+        method="POST"
+        action="/listings/<%= listing._id %>?_method=PUT"
+        enctype="multipart/form-data"
+    >
+
+        <!-- Title -->
+        <div class="form-group">
+            <label>Title</label>
+            <input
+                type="text"
+                name="listing[title]"
+                value="<%= listing.title %>"
+                required>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label>Description</label>
+            <textarea
+                name="listing[description]"
+                rows="4"
+                required><%= listing.description %></textarea>
+        </div>
+
+        <!-- Current Image -->
+        <div class="form-group">
+            <label>Current Image</label><br>
+
+            <img
+                src="<%= listing.image.url %>"
+                alt="Current Image"
+                width="250"
+                style="border-radius:10px; margin-bottom:10px;">
+
+            <input
+                type="file"
+                name="listing[image]"
+                accept="image/*">
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+            <label>Price</label>
+            <input
+                type="number"
+                name="listing[price]"
+                value="<%= listing.price %>"
+                min="0"
+                required>
+        </div>
+
+        <!-- Location -->
+        <div class="form-group">
+            <label>Location</label>
+            <input
+                type="text"
+                name="listing[location]"
+                value="<%= listing.location %>"
+                required>
+        </div>
+
+        <!-- Country -->
+        <div class="form-group">
+            <label>Country</label>
+            <input
+                type="text"
+                name="listing[country]"
+                value="<%= listing.country %>"
+                required>
+        </div>
+
+        <button class="submit-btn">
+            Update Listing
+        </button>
+
+    </form>
+
+</div>

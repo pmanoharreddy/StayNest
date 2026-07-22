@@ -1,0 +1,187 @@
+/* =======================
+   GLOBAL
+======================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:#222;
+}
+
+/* =======================
+   MAIN CONTAINER
+======================= */
+
+.container{
+    width:95%;
+    margin:90px auto 40px auto;
+}
+
+/* =======================
+   HEADING
+======================= */
+
+.heading{
+    font-size:2.2rem;
+    margin-bottom:30px;
+}
+
+/* =======================
+   LISTINGS GRID
+======================= */
+
+.listing-container{
+    display:grid;
+    grid-template-columns:repeat(4,260px);
+    justify-content:center;
+    gap:30px;
+}
+
+/* =======================
+   LINKS
+======================= */
+
+.listing-link{
+    text-decoration:none;
+    color:#222;
+}
+
+/* =======================
+   CARD
+======================= */
+
+.listing-card{
+    width:260px;
+    transition:0.3s ease;
+}
+
+.listing-card:hover{
+    transform:translateY(-5px);
+}
+
+/* =======================
+   IMAGE
+======================= */
+
+.listing-img{
+    width:260px;
+    height:260px;
+    object-fit:cover;
+    border-radius:18px;
+    transition:0.3s;
+}
+
+.listing-card:hover .listing-img{
+    opacity:0.85;
+}
+
+/* =======================
+   CARD INFO
+======================= */
+
+.listing-info{
+    margin-top:10px;
+}
+
+.listing-info h3{
+    font-size:1rem;
+    margin-bottom:5px;
+    font-weight:600;
+}
+
+.listing-info p{
+    font-size:0.95rem;
+    color:#555;
+}
+
+/* =======================
+   BUTTON
+======================= */
+
+.create-btn{
+    margin-top:40px;
+    padding:12px 22px;
+    background:#ff385c;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.3s;
+}
+
+.create-btn:hover{
+    background:#e03150;
+}
+/* =======================
+   RESPONSIVE
+======================= */
+
+/* Large Laptop */
+
+@media(max-width:1300px){
+
+    .listing-container{
+        grid-template-columns:repeat(3,260px);
+    }
+
+}
+
+/* Tablet */
+
+@media(max-width:992px){
+
+    .listing-container{
+        grid-template-columns:repeat(2,260px);
+    }
+
+    .heading{
+        text-align:center;
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .container{
+        width:100%;
+        padding:0 15px;
+    }
+
+    .listing-container{
+        grid-template-columns:260px;
+    }
+
+    .heading{
+        font-size:2rem;
+        text-align:center;
+    }
+
+}
+
+/* Small Mobile */
+
+@media(max-width:350px){
+
+    .listing-container{
+        grid-template-columns:220px;
+    }
+
+    .listing-card{
+        width:220px;
+    }
+
+    .listing-img{
+        width:220px;
+        height:220px;
+    }
+
+}

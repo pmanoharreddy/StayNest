@@ -1,0 +1,45 @@
+.footer{
+    width:100%;
+    height:70px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 3rem;
+
+    background:#f7f7f7;
+    border-top:1px solid #ddd;
+
+    font-size:0.95rem;
+
+    position:fixed;
+    bottom:0;
+    left:0;
+}
+
+.footer-left,
+.footer-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.footer-left a,
+.footer-right a{
+    text-decoration:none;
+    color:#222;
+}
+
+.footer-left a:hover,
+.footer-right a:hover{
+    text-decoration:underline;
+}
+
+.footer-right i{
+    font-size:1.1rem;
+}
+
+.dot{
+    color:#555;
+}

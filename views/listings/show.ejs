@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= listing.title %></title>
+
+    <link rel="stylesheet" href="/css/show.css">
+</head>
+<body>
+<%- include("../includes/flash")%>
+<div class="listing-container">
+
+    <h2><%= listing.title %></h2>
+
+    <img
+        src="<%= listing.image.url %>"
+        alt="<%= listing.title %>"
+        class="listing-image">
+
+    <div class="details">
+        <p>
+            Owned By <%=listing.owner.username%>
+        </p>
+
+        <p>
+            <strong>Description:</strong><br>
+            <%= listing.description %>
+        </p>
+
+        <p>
+            <strong>Price:</strong>
+            ₹ <%= listing.price.toLocaleString("en-IN") %>
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            <%= listing.location %>
+        </p>
+
+        <p>
+            <strong>Country:</strong>
+            <%= listing.country %>
+        </p>
+
+    </div>
+    <div class="buttons">
+
+        <a href="/listings/<%= listing._id %>/edit" class="edit-btn">
+            Edit
+        </a>
+
+        <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE" onsubmit="return confirm('⚠️ This action cannot be undone.\n\nDelete this listing?');">
+
+            <button class="delete-btn">
+                Delete
+            </button>
+
+        </form>
+
+    </div>
+
+    <hr>
+<%if(currUser){%>
+
+<div class="review-section">
+
+    <h3>Leave a Review</h3>
+
+    <form method="POST" action="/listings/<%= listing._id %>/reviews" >
+
+<div class="form-group">
+
+    <label><strong>Rating</strong></label>
+
+    <div class="star-rating">
+
+        <input type="radio" id="star5" name="review[rating]" value="5" required>
+        <label for="star5">★</label>
+
+        <input type="radio" id="star4" name="review[rating]" value="4">
+        <label for="star4">★</label>
+
+        <input type="radio" id="star3" name="review[rating]" value="3">
+        <label for="star3">★</label>
+
+        <input type="radio" id="star2" name="review[rating]" value="2">
+        <label for="star2">★</label>
+
+        <input type="radio" id="star1" name="review[rating]" value="1">
+        <label for="star1">★</label>
+
+    </div>
+
+</div>
+
+        <div class="form-group">
+            <label for="comment"><strong>Comment</strong></label>
+
+            <textarea
+                id="comment"
+                name="review[comment]"
+                rows="5"
+                placeholder="Write your review..."
+                required></textarea>
+        </div>
+
+        <button class="review-btn">
+            Submit Review
+        </button>
+
+    </form>
+
+</div>
+<%}%>
+
+<hr>
+
+<div class="reviews-container">
+
+    <h3>All Reviews</h3>
+
+    <% if(listing.reviews.length > 0) { %>
+
+        <% listing.reviews.forEach(review => { %>
+
+            <div class="review-card">
+                <div>@<%=review.author.username%></div>
+                <div class="review-rating">
+                    <% for(let i = 1; i <= review.rating; i++) { %>
+                        ⭐
+                    <% } %>
+                </div>
+
+                <p class="review-comment">
+                    <%= review.comment %>
+                </p>
+
+                <small class="review-date">
+                    <%= review.createdAt.toDateString() %>
+                </small>
+                    <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+
+            </div>
+
+
+    <% }) %>
+
+    <% } else { %>
+
+        <p>No reviews yet. Be the first to review!</p>
+
+    <% } %>
+
+</div>
+
+</div>
+
+
+</body>
+</html>
