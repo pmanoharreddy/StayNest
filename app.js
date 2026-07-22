@@ -99,7 +99,7 @@ app.use((req, res, next) => {
 // ================= ROUTES =================
 
 app.get("/", (req, res) => {
-    res.render("listings/root");
+    res.redirect("/listings");
 });
 
 app.get("/demouser", async (req, res) => {
