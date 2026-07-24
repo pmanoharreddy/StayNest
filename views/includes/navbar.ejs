@@ -6,30 +6,43 @@
         </a>
     </div>
 
-    <ul class="nav-links">
-        <li><a href="/listings">Explore</a></li>
-        <li><a href="/listings/new">Add New Listing</a></li>
-    </ul>
+    <div class="menu-btn" onclick="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
 
-    <!-- Search Bar -->
-    <form class="search-form" action="/listings" method="GET">
-        <input
-            type="text"
-            name="search"
-            placeholder="Search destinations..."
-            value="<%= typeof search !== 'undefined' ? search : '' %>"        >
-        <button type="submit">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-    </form>
+    <div class="nav-menu" id="navMenu">
 
-    <ul class="auth-links">
-        <% if (!currUser) { %>
-            <li><a href="/signup">Sign Up</a></li>
-            <li><a href="/login" class="login-btn">Login</a></li>
-        <% } else { %>
-            <li><a href="/logout" class="login-btn">Logout</a></li>
-        <% } %>
-    </ul>
+        <ul class="nav-links">
+            <li><a href="/listings">Explore</a></li>
+            <li><a href="/listings/new">Add New Listing</a></li>
+        </ul>
+
+        <form class="search-form" action="/listings" method="GET">
+            <input
+                type="text"
+                name="search"
+                placeholder="Search destinations..."
+                value="<%= typeof search !== 'undefined' ? search : '' %>">
+            <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+
+        <ul class="auth-links">
+            <% if (!currUser) { %>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login" class="login-btn">Login</a></li>
+            <% } else { %>
+                <li><a href="/logout" class="login-btn">Logout</a></li>
+            <% } %>
+        </ul>
+
+    </div>
 
 </nav>
+
+<script>
+function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+}
+</script>
