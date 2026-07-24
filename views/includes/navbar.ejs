@@ -1,15 +1,18 @@
 <nav class="navbar">
 
+    <!-- Logo -->
     <div class="logo">
         <a href="/listings">
             <i class="fa-regular fa-compass"></i>
         </a>
     </div>
 
+    <!-- Hamburger -->
     <div class="menu-btn" onclick="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
     </div>
 
+    <!-- Navigation -->
     <div class="nav-menu" id="navMenu">
 
         <ul class="nav-links">
@@ -23,6 +26,7 @@
                 name="search"
                 placeholder="Search destinations..."
                 value="<%= typeof search !== 'undefined' ? search : '' %>">
+
             <button type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -42,7 +46,7 @@
 </nav>
 
 <script>
-function toggleMenu() {
+function toggleMenu(){
     document.getElementById("navMenu").classList.toggle("active");
 }
 </script>
